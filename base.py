@@ -22,7 +22,7 @@ class Profile(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<Profile %r>' % self.name
 
 
 class Subject(db.Model):
@@ -31,7 +31,7 @@ class Subject(db.Model):
     code = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<Subject %r>' % self.name
 
 
 
@@ -66,7 +66,6 @@ def createsubject(name,code):
 @app.route('/api/<model>/')
 def status(model):
     try:
-        # import ipdb; ipdb.set_trace()
         if model =='profile':
             p_obj = Profile.query.all()
             json = [{'name':i.name,"email":i.email} for i in p_obj]
