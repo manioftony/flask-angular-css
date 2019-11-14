@@ -12,8 +12,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 @app.route('/')
+def base():
+    return render_template('base.html',**locals())
+
+@app.route('/index/')
 def index():
     return render_template('index.html',**locals())
+
 
 
 class Profile(db.Model):
